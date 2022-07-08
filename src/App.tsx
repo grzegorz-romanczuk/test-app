@@ -51,7 +51,9 @@ function App() {
     console.log(`(${phoneNumber.prefix} ${phoneNumber.number}) `);
   };
 
-  const defaultValue = { prefix: "Poland", number: "48" };
+  const [phone, setPhone] = useState({ number: "", prefix: "" });
+
+  console.log(phone);
 
   return (
     <div>
@@ -67,8 +69,8 @@ function App() {
       {isOpen && <p>It's open</p>}
       <PhoneNumberInput
         prefixes={prefixes}
-        onChange={onChangeHandel}
-        value={defaultValue}
+        onChange={(newPhone) => setPhone(newPhone)}
+        value={phone}
       />
     </div>
   );
