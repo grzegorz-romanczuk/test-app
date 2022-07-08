@@ -1,0 +1,21 @@
+.prefix {
+    width: 175px;
+    height: auto;
+    float: left;
+    margin: 5px;
+}
+.phone-number{
+    width: 500px;
+    height: 100%;
+    margin: 5px;
+    
+}
+input::-webkit-inner-spin-button{
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.phone-number-container{
+    display: flexbox;
+    height: 30px;
+}
