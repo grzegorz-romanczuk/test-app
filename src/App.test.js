@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-test('renders learn react link', () => {
+import App from "./App";
+
+it("Check if button opens paragraph", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonElement = screen.getByRole("button");
+  fireEvent.click(buttonElement);
+  const paragraphElement = screen.getByText(/It's open/i);
+  expect(paragraphElement).toBeInTheDocument();
 });
