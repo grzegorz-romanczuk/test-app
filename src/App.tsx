@@ -47,7 +47,6 @@ function App() {
 
   const [phone, setPhone] = useState({ number: "50234113", prefix: "48" });
 
-  type InputChangeEventType = React.ChangeEvent<HTMLInputElement>;
   return (
     <React.Fragment>
       <div>
