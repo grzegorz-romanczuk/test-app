@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import PhoneNumberInput from "./components/phone-number/PhoneNumberInput";
 import { LetterOnlyInput } from "./LetterOnlyInput";
@@ -44,35 +44,37 @@ function App() {
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState({ prefix: "", number: "" });
 
-  const onChangeHandel = (prefix, number) => {
-    setPhoneNumber({ prefix, number });
-    console.log(`(${phoneNumber.prefix} ${phoneNumber.number}) `);
-  };
+  const [phone, setPhone] = useState({ number: "50234113", prefix: "48" });
 
-  const [phone, setPhone] = useState({ number: "", prefix: "" });
-
-  console.log(phone);
-
+  type InputChangeEventType = React.ChangeEvent<HTMLInputElement>;
   return (
-    <div>
-      <LetterOnlyInput
-        value={name}
-        onChange={(newValue) => setName(newValue)}
-      />
-      <LetterOnlyInput
-        value={surname}
-        onChange={(newValue) => setSurname(newValue)}
-      />
-      <button onClick={buttonHandler}>{!isOpen ? "Open" : "Close"}</button>
-      {isOpen && <p>It's open</p>}
-      <PhoneNumberInput
-        prefixes={prefixes}
-        onChange={(newPhone) => setPhone(newPhone)}
-        value={phone}
-      />
-    </div>
+    <React.Fragment>
+      <div>
+        <LetterOnlyInput
+          value={name}
+          onChange={(newValue: string) => setName(newValue)}
+        />
+        <LetterOnlyInput
+          value={surname}
+          onChange={(newValue: string) => setSurname(newValue)}
+        />
+        <button onClick={buttonHandler}>{!isOpen ? "Open" : "Close"}</button>
+        {isOpen && <p>It's open</p>}
+        <PhoneNumberInput
+          prefixes={prefixes}
+          onChange={(newPhone: { number: string; prefix: string }) =>
+            setPhone(newPhone)
+          }
+          value={phone}
+        />
+      </div>
+      {phone.number !== "" && phone.prefix !== "" && (
+        <div>
+          <p>{`(+${phone.prefix}) ${phone.number}`}</p>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 
