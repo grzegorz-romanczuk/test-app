@@ -38,14 +38,17 @@ const PhoneNumberInput = ({
         options={prefixesFormated}
         className={classes.prefix}
         value={selectedOption}
+        name="prefixes"
+        inputId="prefix"
         onChange={onPrefixChange}
       />
       <input
         className={classes["phone-number"]}
         onChange={onNumberChange}
         value={value.number}
+        name="phone"
         placeholder="Phone number..."
-        type="number"
+        type="text"
       />
     </div>
   );
